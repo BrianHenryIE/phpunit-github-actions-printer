@@ -8,86 +8,79 @@ use PHPUnit\TextUI\ResultPrinter;
 
 class Printer extends ResultPrinter
 {
-    protected $currentType = null;
+	protected $currentType = null;
 
-    protected function printHeader(): void
-    {
-    }
+	protected function printHeader(): void
+	{
+	}
 
-    protected function writeProgress(string $progress): void
-    {
-    }
+	protected function writeProgress(string $progress): void
+	{
+	}
 
-    protected function printFooter(TestResult $result): void
-    {
-    }
+	protected function printFooter(TestResult $result): void
+	{
+	}
 
-    protected function printDefects(array $defects, string $type): void
-    {
-        $this->currentType = $type;
+	protected function printDefects(array $defects, string $type): void
+	{
+		$this->currentType = $type;
 
-        foreach ($defects as $i => $defect) {
-            $this->printDefect($defect, $i);
-        }
-    }
+		foreach ($defects as $i => $defect) {
+			$this->printDefect($defect, $i);
+		}
+	}
 
-    protected function printDefectHeader(TestFailure $defect, int $count): void
-    {
-    }
+	protected function printDefectHeader(TestFailure $defect, int $count): void
+	{
+	}
 
-    protected function printDefectTrace(TestFailure $defect): void
-    {
-        $e = $defect->thrownException();
+	protected function printDefectTrace(TestFailure $defect): void
+	{
+		$e = $defect->thrownException();
 
-        $errorLines = array_filter(
-            explode("\n", (string)$e),
-            function ($l) {
-                return $l;
-            }
-        );
+		$errorLines = array_filter(
+			explode("\n", (string)$e),
+			function ($l) {
+				return $l;
+			}
+		);
 
-        $error = end($errorLines);
-        $lineIndex = strrpos($error, ":");
-        $path = substr($error, 0, $lineIndex);
-        $line = substr($error, $lineIndex + 1);
+		$error = end($errorLines);
+		$lineIndex = strrpos($error, ":");
+		$path = substr($error, 0, $lineIndex);
+		$line = substr($error, $lineIndex + 1);
 
-        list($reflectedPath, $reflectedLine) = $this->getReflectionFromTest(
-            $defect->getTestName()
-        );
+		list($reflectedPath, $reflectedLine) = $this->getReflectionFromTest(
+			$defect->getTestName()
+		);
 
-        if($path !== $reflectedPath) {
-        	$path = $reflectedPath;
-        	$line = $reflectedLine;
-        }
-
-$message = $e->getMessage();
-//	    $message = explode("\n", $e->getMessage())[0];
-
-	    $type = $this->getCurrentType();
-	    $file = $this->relativePath($path);
-
-//	    BrianHenryIE/bh-wp-github-actions-tests
-//		32f7e351cde52c42212e116f9d067c610e5dc2e0
-//		refs/heads/branch34
-//	    error_log( getenv('GITHUB_REPOSITORY') );
-//	    error_log( getenv('GITHUB_SHA') ) ;
-//	    error_log( getenv('GITHUB_REF') );
+		if($path !== $reflectedPath) {
+			$path = $reflectedPath;
+			$line = $reflectedLine;
+		}
 
 
-	    //  refs/heads/branch30
+		$message = explode("\n", $e->getMessage())[0];
+
+		$type = $this->getCurrentType();
+		$file = $this->relativePath($path);
+
+//	    getenv('GITHUB_REPOSITORY');
+//	    getenv('GITHUB_SHA');
+//	    getenv('GITHUB_REF');
+
+		$githubRef = getenv('GITHUB_REF');
 
 
-	    $githubRef = getenv('GITHUB_REF');
-
-
-	    $output= "::{$type} file={$githubRef}{$file},line={$line}::{$message}";
+		$output= "::{$type} file={$githubRef}{$file},line={$line}::{$message}";
 
 //	    $output = "::{$file}: line {$line}, col 0, {$type} - {$message}";
 //
 //	    error_log(base64_encode($output));
-//	    error_log( $output );
-	    $this->write("{$output}\n");
-    }
+		error_log( $output );
+		$this->write("{$output}\n");
+	}
 //
 //        error_log($path);
 //        $message = explode("\n", $e->getMessage())[0];
@@ -107,29 +100,29 @@ $message = $e->getMessage();
 //        $this->write($annotation);
 //    }
 
-    protected function getCurrentType()
-    {
-        if (in_array($this->currentType, ['error', 'failure'])) {
-            return 'error';
-        }
+	protected function getCurrentType()
+	{
+		if (in_array($this->currentType, ['error', 'failure'])) {
+			return 'error';
+		}
 
-        return 'warning';
-    }
+		return 'warning';
+	}
 
-    protected function relativePath(string $path)
-    {
-        $relative = str_replace(getcwd() . DIRECTORY_SEPARATOR, '', $path);
-        // Translate \ in to / for Windows
-        $relative = str_replace('\\', '/', $relative);
-        return $relative;
-    }
+	protected function relativePath(string $path)
+	{
+		$relative = str_replace(getcwd() . DIRECTORY_SEPARATOR, '', $path);
+		// Translate \ in to / for Windows
+		$relative = str_replace('\\', '/', $relative);
+		return $relative;
+	}
 
-    protected function getReflectionFromTest(string $name)
-    {
-        list($klass, $method) = explode('::', $name);
-        $c = new \ReflectionClass($klass);
-        $m = $c->getMethod($method);
+	protected function getReflectionFromTest(string $name)
+	{
+		list($klass, $method) = explode('::', $name);
+		$c = new \ReflectionClass($klass);
+		$m = $c->getMethod($method);
 
-        return [$m->getFileName(), $m->getStartLine()];
-    }
+		return [$m->getFileName(), $m->getStartLine()];
+	}
 }
