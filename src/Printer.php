@@ -79,13 +79,18 @@ class Printer extends ResultPrinter
 
 		$output = array();
 
+		$output[] = "::{$type} file={$githubRepository}/{$githubRef}/{$file},line={$line}::{$message}";
+		$output[] = "::{$type} file={$githubRepository}/{$githubRef}/{$file},line={$line},col=0::{$message}";
+
 		$output[] = "::{$type} file={$file},line={$line}::{$message}";
 		$output[] = "::{$type} file={$file},line={$line},col=0::{$message}";
 
 
+		//  home/runner/work/bh-wp-github-actions-tests/bh-wp-github-actions-teststests/wp-mock/api/class-api-mock-test.php:50
 		$output[] = "::{$type} file={$githubWorkspace}{$file},line={$line}::{$message}";
 		$output[] = "::{$type} file={$githubWorkspace}/{$file},line={$line}::{$message}";
 
+		// ::error file=BrianHenryIE/bh-wp-github-actions-teststests/wp-mock/api/class-api-mock-test.php,line=50::Failed asserting that false is true.
 		$output[] = "::{$type} file={$githubRepository}{$file},line={$line}::{$message}";
 		$output[] = "::{$type} file={$githubRepository}/{$file},line={$line}::{$message}";
 
@@ -113,7 +118,8 @@ class Printer extends ResultPrinter
 
 		foreach($output as $out) {
 			error_log( base64_encode( $out ) );
-			$this->write( "{$out}\n" );
+//			$this->write( "{$out}\n" );
+			error_log( "{$out}\n" );
 		}
 	}
 //
