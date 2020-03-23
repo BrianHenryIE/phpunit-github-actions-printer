@@ -84,6 +84,9 @@ class Printer extends ResultPrinter
 
 		$output = array();
 
+		$output[] = "::{$type} file=/{$path},line={$line}::{$message}";
+		$output[] = "::{$type} file=/{$path},line={$line},col=0::{$message}";
+		
 		$output[] = "::{$type} file={$githubRepository}/commit/{$githubSha}/{$file},line={$line}::{$message}";
 		$output[] = "::{$type} file={$githubRepository}/commit/{$githubSha}/{$file},line={$line},col=0::{$message}";
 
