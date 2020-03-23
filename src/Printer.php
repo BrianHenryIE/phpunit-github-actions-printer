@@ -62,23 +62,32 @@ class Printer extends ResultPrinter
         	$line = $reflectedLine;
         }
 
-        error_log($path);
-        $message = explode("\n", $e->getMessage())[0];
 
-        $type = $this->getCurrentType();
+	    $message = explode("\n", $e->getMessage())[0];
 
-//BrianHenryIE/bh-wp-github-actions-tests/blob/c6b8fdd3855247ddff93ce39f6b833bc9d38a971
-	    $file = "path={$this->relativePath($path)}";
-
-        $line = "line={$line}";
-//	    $startline = "start_line={$line}";
-//	    $endline = intval($line) + 10;
-//	    $endline = "end_line={$endline}";
-        $commitpath = getenv('GITHUB_REPOSITORY' ) . '/blob/' . getenv( 'GITHUB_SHA' );
-        $annotation = "::{$type} $file,$line::{$message} {$file}\n";
-        error_log($annotation);
-        $this->write($annotation);
+	    $type = $this->getCurrentType();
+	    $file = "file={$this->relativePath($path)}";
+	    $line = "line={$line}";
+	    $this->write("::{$type} $file,$line::{$message}\n");
     }
+//
+//        error_log($path);
+//        $message = explode("\n", $e->getMessage())[0];
+//
+//        $type = $this->getCurrentType();
+//
+//		//BrianHenryIE/bh-wp-github-actions-tests/blob/c6b8fdd3855247ddff93ce39f6b833bc9d38a971
+//	    $file = "path={$this->relativePath($path)}";
+//
+//        $line = "line={$line}";
+////	    $startline = "start_line={$line}";
+////	    $endline = intval($line) + 10;
+////	    $endline = "end_line={$endline}";
+//        $commitpath = getenv('GITHUB_REPOSITORY' ) . '/blob/' . getenv( 'GITHUB_SHA' );
+//        $annotation = "::{$type} $file,$line::{$message} {$file}\n";
+//        error_log($annotation);
+//        $this->write($annotation);
+//    }
 
     protected function getCurrentType()
     {
