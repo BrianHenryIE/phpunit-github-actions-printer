@@ -66,7 +66,7 @@ class Printer extends ResultPrinter
 	    $type = $this->getCurrentType();
 	    $file = $this->relativePath($path);
 	    $output= "::{$type} file={$file},line={$line}::{$message}";
-	    error_log($output);
+	    error_log(base64($output));
 	    $this->write("{$output}\n");
     }
 //
