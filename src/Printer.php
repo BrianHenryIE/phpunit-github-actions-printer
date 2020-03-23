@@ -65,8 +65,8 @@ class Printer extends ResultPrinter
 
 	    $type = $this->getCurrentType();
 	    $file = $this->relativePath($path);
-	    $output= "::{$type} file={$file},line={$line}::{$message} {$file}\n";
-	    $this->write($output . ' ' . base64_encode($output) . "TEST");
+	    $output= "::{$type} file={$file},line={$line}::{$message} {$file}";
+	    $this->write($output . ' ' . base64_encode($output) . "TEST" . "\n");
     }
 //
 //        error_log($path);
@@ -90,10 +90,10 @@ class Printer extends ResultPrinter
     protected function getCurrentType()
     {
         if (in_array($this->currentType, ['error', 'failure'])) {
-            return 'error';
+            return 'Error';
         }
 
-        return 'warning';
+        return 'Warning';
     }
 
     protected function relativePath(string $path)
