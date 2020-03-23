@@ -72,7 +72,9 @@ class Printer extends ResultPrinter
 //	    $endline = intval($line) + 10;
 //	    $endline = "end_line={$endline}";
         $commitpath = getenv('GITHUB_REPOSITORY' ) . '/blob/' . getenv( 'GITHUB_SHA' );
-        $this->write("::{$type} $file, $line::{$message} {$file}\n");
+        $annotation = "::{$type} $file, $line::{$message} {$file}\n";
+        error_log($annotation);
+        $this->write($annotation);
     }
 
     protected function getCurrentType()
