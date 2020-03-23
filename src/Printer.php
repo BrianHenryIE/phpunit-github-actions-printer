@@ -60,8 +60,8 @@ class Printer extends ResultPrinter
         	$line = $reflectedLine;
         }
 
-$message = $e->getMessage();
-//	    $message = explode("\n", $e->getMessage())[0];
+//$message = $e->getMessage();
+	    $message = explode("\n", $e->getMessage())[0];
 
 	    $type = $this->getCurrentType();
 	    $file = $this->relativePath($path);
