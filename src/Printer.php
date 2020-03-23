@@ -63,7 +63,10 @@ class Printer extends ResultPrinter
         $message = explode("\n", $e->getMessage())[0];
 
         $type = $this->getCurrentType();
-        $file = "path={$this->relativePath($path)}";
+
+//BrianHenryIE/bh-wp-github-actions-tests/blob/c6b8fdd3855247ddff93ce39f6b833bc9d38a971
+	    $file = "path={$this->relativePath($path)}";
+
         $line = "line={$line}";
 //	    $startline = "start_line={$line}";
 //	    $endline = intval($line) + 10;
