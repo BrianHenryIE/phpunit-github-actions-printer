@@ -82,8 +82,8 @@ class Printer extends ResultPrinter
 		$output[] = "::{$type} file={$githubRepository}/{$githubSha}/{$file},line={$line}::{$message}";
 		$output[] = "::{$type} file={$githubRepository}/{$githubSha}/{$file},line={$line},col=0::{$message}";
 
-		$output[] = "::{$type} file={$file},line={$line}::{$message}";
-		$output[] = "::{$type} file={$file},line={$line},col=0::{$message}";
+		$output[] = "::{$type} file=/{$file},line={$line}::{$message}";
+		$output[] = "::{$type} file=/{$file},line={$line},col=0::{$message}";
 
 
 		//  home/runner/work/bh-wp-github-actions-tests/bh-wp-github-actions-teststests/wp-mock/api/class-api-mock-test.php:50
