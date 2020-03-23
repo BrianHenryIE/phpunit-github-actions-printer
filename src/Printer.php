@@ -58,6 +58,9 @@ class Printer extends ResultPrinter
 			$defect->getTestName()
 		);
 
+
+		error_log( $path );
+
 		if($path !== $reflectedPath) {
 			$path = $reflectedPath;
 			$line = $reflectedLine;
