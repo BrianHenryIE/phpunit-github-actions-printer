@@ -66,14 +66,13 @@ class Printer extends ResultPrinter
 		$type = $this->getCurrentType();
 		$file = $this->relativePath($path);
 
-//	    getenv('GITHUB_REPOSITORY');
-//	    getenv('GITHUB_SHA');
-//	    getenv('GITHUB_REF');
+	    $githubRepository = getenv('GITHUB_REPOSITORY');
+	    $githubSha = getenv('GITHUB_SHA');
 
 		$githubRef = getenv('GITHUB_REF');
 
 
-		$output= "::{$type} file={$githubRef}/{$file},line={$line}::{$message}";
+		$output= "::{$type} file={$githubSha}/{$file},line={$line}::{$message}";
 
 //	    $output = "::{$file}: line {$line}, col 0, {$type} - {$message}";
 //
