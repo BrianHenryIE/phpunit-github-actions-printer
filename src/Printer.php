@@ -66,15 +66,18 @@ $message = $e->getMessage();
 	    $type = $this->getCurrentType();
 	    $file = $this->relativePath($path);
 
-	    error_log( getenv('GITHUB_REPOSITORY') );
-	    error_log( getenv('GITHUB_SHA') ) ;
-	    error_log( getenv('GITHUB_REF') );
+//	    BrianHenryIE/bh-wp-github-actions-tests
+//		32f7e351cde52c42212e116f9d067c610e5dc2e0
+//		refs/heads/branch34
+//	    error_log( getenv('GITHUB_REPOSITORY') );
+//	    error_log( getenv('GITHUB_SHA') ) ;
+//	    error_log( getenv('GITHUB_REF') );
 
 
 	    //  refs/heads/branch30
 
 
-	    $githubRef = getenv('GITHUB_WORKSPACE');
+	    $githubRef = getenv('GITHUB_REPOSITORY');
 
 
 	    $output= "::{$type} file={$githubRef}/{$file},line={$line}::{$message}";
