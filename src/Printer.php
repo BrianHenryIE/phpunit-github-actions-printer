@@ -51,8 +51,6 @@ class Printer extends ResultPrinter
         $path = substr($error, 0, $lineIndex);
         $line = substr($error, $lineIndex + 1);
 
-        error_log( $path );
-
         list($reflectedPath, $reflectedLine) = $this->getReflectionFromTest(
             $defect->getTestName()
         );
@@ -66,9 +64,9 @@ class Printer extends ResultPrinter
 	    $message = explode("\n", $e->getMessage())[0];
 
 	    $type = $this->getCurrentType();
-	    $file = "file={$this->relativePath($path)}";
-	    $line = "line={$line}";
-	    $this->write("::{$type} $file,$line::{$message} {$file}\n");
+	    $file = $this->relativePath($path);
+	    $output= "::{$type} file={$file},line={$line}::{$message} {$file}\n";
+	    $this->write($output . ' ' . $output);
     }
 //
 //        error_log($path);
