@@ -60,18 +60,20 @@ class Printer extends ResultPrinter
         	$line = $reflectedLine;
         }
 
-//$message = $e->getMessage();
-	    $message = explode("\n", $e->getMessage())[0];
+$message = $e->getMessage();
+//	    $message = explode("\n", $e->getMessage())[0];
 
 	    $type = $this->getCurrentType();
 	    $file = $this->relativePath($path);
 
-//	    getenv('GITHUB_REPOSITORY');
-//	    getenv('GITHUB_SHA');
-//	    getenv('GITHUB_REF');
+	    error_log( getenv('GITHUB_REPOSITORY') );
+	    error_log( getenv('GITHUB_SHA') ) ;
+	    error_log( getenv('GITHUB_REF') );
 
 
 	    //  refs/heads/branch30
+
+
 	    $githubRef = getenv('GITHUB_WORKSPACE');
 
 
