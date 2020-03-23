@@ -68,7 +68,7 @@ class Printer extends ResultPrinter
 	    $type = $this->getCurrentType();
 	    $file = "file={$this->relativePath($path)}";
 	    $line = "line={$line}";
-	    $this->write("::{$type} $file,$line::{$message}\n");
+	    $this->write("::{$type} $file,$line::{$message} {$file}\n");
     }
 //
 //        error_log($path);
