@@ -65,11 +65,11 @@ class Printer extends ResultPrinter
         $type = $this->getCurrentType();
         $file = "path={$this->relativePath($path)}";
         $line = "line={$line}";
-	    $startline = "start_line={$line}";
-	    $endline = intval($line) + 10;
-	    $endline = "end_line={$endline}";
+//	    $startline = "start_line={$line}";
+//	    $endline = intval($line) + 10;
+//	    $endline = "end_line={$endline}";
         $commitpath = getenv('GITHUB_REPOSITORY' ) . '/blob/' . getenv( 'GITHUB_SHA' );
-        $this->write("::{$type} $file,$startline,$endline::{$message} {$commitpath}\n");
+        $this->write("::{$type} $file, $line::{$message} {$file}\n");
     }
 
     protected function getCurrentType()
