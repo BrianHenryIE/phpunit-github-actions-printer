@@ -23,3 +23,6 @@ When you run your tests, specify `mheap\GithubActionsReporter\Printer` as the pr
 ```bash
 ./vendor/bin/phpunit --printer mheap\\GithubActionsReporter\\Printer /path/to/tests
 ```
+
+
+"::{$type} file={$file},line={$line}::{$message} {$file}"
