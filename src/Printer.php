@@ -40,7 +40,7 @@ class Printer extends ResultPrinter
 		parent::__construct($out, $verbose, $colors, $debug, $numberOfColumns, $reverse);
 
 		error_log( __CLASS__ );
-		error_log( '$output= "::{$type} file={$githubWorkspace}/{$file},line={$line}::{$message}"' );
+		error_log( '$output= "::{$type} file={$path},line={$line}::{$message}"' );
 	}
 
 	protected function printDefectTrace(TestFailure $defect): void
@@ -80,7 +80,7 @@ class Printer extends ResultPrinter
 
 		$githubWorkspace = getenv('GITHUB_WORKSPACE');
 
-		$output= "::{$type} file={$githubWorkspace}/{$file},line={$line}::{$message}";
+		$output= "::{$type} file={$path},line={$line}::{$message}";
 
 //	    $output = "::{$file}: line {$line}, col 0, {$type} - {$message}";
 //
