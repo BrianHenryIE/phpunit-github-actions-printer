@@ -10,8 +10,11 @@ class Printer extends ResultPrinter
 {
 	protected $currentType = null;
 
-		protected function printHeader(): void
+	protected function printHeader(): void
 	{
+		error_log( __CLASS__ );
+		error_log( '$output= "::{$type} file={$githubWorkspace}{$file},line={$line}::{$message}"' );
+
 	}
 
 	protected function writeProgress(string $progress): void
@@ -33,14 +36,6 @@ class Printer extends ResultPrinter
 
 	protected function printDefectHeader(TestFailure $defect, int $count): void
 	{
-	}
-
-	public function __construct($out = null, bool $verbose = false, string $colors = self::COLOR_DEFAULT, bool $debug = false, $numberOfColumns = 80, bool $reverse = false) {
-
-		parent::__construct($out, $verbose, $colors, $debug, $numberOfColumns, $reverse);
-
-		error_log( __CLASS__ );
-		error_log( '$output= "::{$type} file={$githubWorkspace}{$file},line={$line}::{$message}"' );
 	}
 
 	protected function printDefectTrace(TestFailure $defect): void
@@ -78,15 +73,34 @@ class Printer extends ResultPrinter
 	    $githubSha = getenv('GITHUB_SHA');
 		$githubRef = getenv('GITHUB_REF');
 
+//		::error file=/home/runner/work/bh-wp-github-actions-tests/bh-wp-github-actions-teststests/wp-mock/class-plugin-wp-mock-test.php,line=89::ok then
+//		/home/runner/work/bh-wp-github-actions-tests/bh-wp-github-actions-teststests/wp-mock/class-plugin-wp-mock-test.php
 		$githubWorkspace = getenv('GITHUB_WORKSPACE');
 
-		$output= "::{$type} file={$githubWorkspace}{$file},line={$line}::{$message}";
+		$output = array();
+
+		$output[] = "::{$type} file={$githubWorkspace}{$file},line={$line}::{$message}";
+		$output[] = "::{$type} file={$githubWorkspace}/{$file},line={$line}::{$message}";
+
+		$output[] = "::{$type} file={$githubRepository}{$file},line={$line}::{$message}";
+		$output[] = "::{$type} file={$githubRepository}/{$file},line={$line}::{$message}";
+
+		$output[] = "::{$type} file={$githubSha}{$file},line={$line}::{$message}";
+		$output[] = "::{$type} file={$githubSha}/{$file},line={$line}::{$message}";
+
+		$output[] = "::{$type} file={$githubRef}{$file},line={$line}::{$message}";
+		$output[] = "::{$type} file={$githubRef}/{$file},line={$line}::{$message}";
+
+		$output[] = "::{$type} file={$githubRef}{$file},line={$line},col=0::{$message}";
+		$output[] = "::{$type} file={$githubRef}/{$file},line={$line},col=0::{$message}";
+
 
 //	    $output = "::{$file}: line {$line}, col 0, {$type} - {$message}";
-//
-	    error_log(base64_encode($output));
-//		error_log( $output );
-		$this->write("{$output}\n");
+
+		foreach($output as $out) {
+			error_log( base64_encode( $out ) );
+			$this->write( "{$out}\n" );
+		}
 	}
 //
 //        error_log($path);
