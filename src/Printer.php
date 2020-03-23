@@ -37,6 +37,8 @@ class Printer extends ResultPrinter
 
     protected function printDefectTrace(TestFailure $defect): void
     {
+	    var_dump($_ENV);
+
         $e = $defect->thrownException();
 
         $errorLines = array_filter(
