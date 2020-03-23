@@ -79,7 +79,7 @@ class Printer extends ResultPrinter
 
 //	    $output = "::{$file}: line {$line}, col 0, {$type} - {$message}";
 //
-	    error_log(base64_encode($output));
+//	    error_log(base64_encode($output));
 //	    error_log( $output );
 	    $this->write("{$output}\n");
     }
