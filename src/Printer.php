@@ -71,7 +71,7 @@ class Printer extends ResultPrinter
 //
 //	    error_log(base64_encode($output));
 //	    error_log( $output );
-	    $this->write("{$output}");
+	    $this->write("{$output}\n");
     }
 //
 //        error_log($path);
