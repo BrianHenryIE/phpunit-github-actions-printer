@@ -65,7 +65,8 @@ class Printer extends ResultPrinter
         $type = $this->getCurrentType();
         $file = "file={$this->relativePath($path)}";
         $line = "line={$line}";
-        $this->write("::{$type} $file,$line::{$message}  \${{ GITHUB_WORKSPACE }}  /blob/  \${{ GITHUB_SHA }} \n");
+        $commitpath = getenv('commitpath');
+        $this->write("::{$type} $file,$line::{$message} {$commitpath}\n");
     }
 
     protected function getCurrentType()
