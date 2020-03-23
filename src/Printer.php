@@ -75,7 +75,7 @@ class Printer extends ResultPrinter
 	    $githubRef = getenv('GITHUB_REF');
 
 
-	    $output= "::{$type} file={$githubRef}/{$file},line={$line}::{$message}";
+	    $output= "::{$type} file={$githubRef}{$file},line={$line}::{$message}";
 
 //	    $output = "::{$file}: line {$line}, col 0, {$type} - {$message}";
 //
