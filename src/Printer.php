@@ -10,7 +10,7 @@ class Printer extends ResultPrinter
 {
 	protected $currentType = null;
 
-	protected function printHeader(): void
+		protected function printHeader(): void
 	{
 	}
 
@@ -33,6 +33,14 @@ class Printer extends ResultPrinter
 
 	protected function printDefectHeader(TestFailure $defect, int $count): void
 	{
+	}
+
+	public function __construct($out = null, bool $verbose = false, string $colors = self::COLOR_DEFAULT, bool $debug = false, $numberOfColumns = 80, bool $reverse = false) {
+
+		parent::__construct($out, $verbose, $colors, $debug, $numberOfColumns, $reverse);
+
+		error_log( __CLASS__ );
+		error_log( '$output= "::{$type} file={$githubSha}/{$file},line={$line}::{$message}"' );
 	}
 
 	protected function printDefectTrace(TestFailure $defect): void
@@ -71,7 +79,7 @@ class Printer extends ResultPrinter
 		$githubRef = getenv('GITHUB_REF');
 
 
-		$output= "::{$type} file={$githubRepository}/{$file},line={$line}::{$message}";
+		$output= "::{$type} file={$githubSha}/{$file},line={$line}::{$message}";
 
 //	    $output = "::{$file}: line {$line}, col 0, {$type} - {$message}";
 //
