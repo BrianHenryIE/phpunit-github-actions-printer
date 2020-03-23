@@ -51,6 +51,8 @@ class Printer extends ResultPrinter
         $path = substr($error, 0, $lineIndex);
         $line = substr($error, $lineIndex + 1);
 
+        error_log( $path );
+
         list($reflectedPath, $reflectedLine) = $this->getReflectionFromTest(
             $defect->getTestName()
         );
@@ -60,6 +62,7 @@ class Printer extends ResultPrinter
         	$line = $reflectedLine;
         }
 
+        error_log($path);
         $message = explode("\n", $e->getMessage())[0];
 
         $type = $this->getCurrentType();
