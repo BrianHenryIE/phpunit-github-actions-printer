@@ -72,7 +72,7 @@ class Printer extends ResultPrinter
 
 
 	    //  refs/heads/branch30
-	    $githubRef = getenv('GITHUB_SHA');
+	    $githubRef = getenv('GITHUB_WORKSPACE');
 
 
 	    $output= "::{$type} file={$githubRef}/{$file},line={$line}::{$message}";
