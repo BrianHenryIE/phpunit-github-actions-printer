@@ -37,8 +37,6 @@ class Printer extends ResultPrinter
 
     protected function printDefectTrace(TestFailure $defect): void
     {
-	    var_dump($_ENV);
-
         $e = $defect->thrownException();
 
         $errorLines = array_filter(
@@ -67,7 +65,7 @@ class Printer extends ResultPrinter
         $type = $this->getCurrentType();
         $file = "file={$this->relativePath($path)}";
         $line = "line={$line}";
-        $this->write("::{$type} $file,$line::{$message}\n");
+        $this->write("::{$type} \${{ GITHUB_WORKSPACE }}/blob/\${{ GITHUB_SHA }}$file,$line::{$message}\n");
     }
 
     protected function getCurrentType()
