@@ -67,7 +67,7 @@ class Printer extends ResultPrinter
 	    $file = $this->relativePath($path);
 	    $output= "::{$type} file={$file},line={$line}::{$message}";
 
-	    $output = "::{$file}: line {$line}, col 0, {$type} - {$message}";
+//	    $output = "::{$file}: line {$line}, col 0, {$type} - {$message}";
 //
 //	    error_log(base64_encode($output));
 //	    error_log( $output );
