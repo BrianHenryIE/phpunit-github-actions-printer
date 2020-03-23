@@ -79,6 +79,10 @@ class Printer extends ResultPrinter
 
 		$output = array();
 
+		$output[] = "::{$type} file={$file},line={$line}::{$message}";
+		$output[] = "::{$type} file={$file},line={$line},col=0::{$message}";
+
+
 		$output[] = "::{$type} file={$githubWorkspace}{$file},line={$line}::{$message}";
 		$output[] = "::{$type} file={$githubWorkspace}/{$file},line={$line}::{$message}";
 
@@ -90,6 +94,16 @@ class Printer extends ResultPrinter
 
 		$output[] = "::{$type} file={$githubRef}{$file},line={$line}::{$message}";
 		$output[] = "::{$type} file={$githubRef}/{$file},line={$line}::{$message}";
+
+
+		$output[] = "::{$type} file={$githubWorkspace}{$file},line={$line},col=0::{$message}";
+		$output[] = "::{$type} file={$githubWorkspace}/{$file},line={$line},col=0::{$message}";
+
+		$output[] = "::{$type} file={$githubRepository}{$file},line={$line},col=0::{$message}";
+		$output[] = "::{$type} file={$githubRepository}/{$file},line={$line},col=0::{$message}";
+
+		$output[] = "::{$type} file={$githubSha}{$file},line={$line},col=0::{$message}";
+		$output[] = "::{$type} file={$githubSha}/{$file},line={$line},col=0::{$message}";
 
 		$output[] = "::{$type} file={$githubRef}{$file},line={$line},col=0::{$message}";
 		$output[] = "::{$type} file={$githubRef}/{$file},line={$line},col=0::{$message}";
