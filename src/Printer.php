@@ -84,7 +84,7 @@ class Printer extends ResultPrinter
 
 		$output = array();
 
-		$output[] = "::{$type} file=/{$path},line={$line}::{$message}";
+		$output[] = "::{$type} file=/{$file},line={$line}::{$message}";
 //		$output[] = "::{$type} file=/{$path},line={$line},col=0::{$message}";
 //
 //		$output[] = "::{$type} file={$githubRepository}/commit/{$githubSha}/{$file},line={$line}::{$message}";
@@ -125,9 +125,9 @@ class Printer extends ResultPrinter
 //	    $output = "::{$file}: line {$line}, col 0, {$type} - {$message}";
 
 		foreach($output as $out) {
-			error_log( base64_encode( $out ) );
-//			$this->write( "{$out}\n" );
-			error_log( "{$out}\n" );
+//			error_log( base64_encode( $out ) );
+			$this->write( "{$out}\n" );
+//			error_log( "{$out}\n" );
 		}
 	}
 //
