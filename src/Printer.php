@@ -58,12 +58,7 @@ class Printer extends ResultPrinter
 			$defect->getTestName()
 		);
 
-
-		// /home/runner/work/bh-wp-github-actions-tests/bh-wp-github-actions-tests/vendor/10up/wp_mock/php/WP_Mock/Tools/TestCase.php
-		error_log( 'path: ' . $path );
-		error_log( 'reflectedpath: ' . $reflectedPath );
-
-		if($path !== $reflectedPath) {
+	if($path !== $reflectedPath) {
 			$path = $reflectedPath;
 			$line = $reflectedLine;
 		}
