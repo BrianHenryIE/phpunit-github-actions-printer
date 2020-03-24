@@ -85,41 +85,41 @@ class Printer extends ResultPrinter
 		$output = array();
 
 		$output[] = "::{$type} file=/{$path},line={$line}::{$message}";
-		$output[] = "::{$type} file=/{$path},line={$line},col=0::{$message}";
-		
-		$output[] = "::{$type} file={$githubRepository}/commit/{$githubSha}/{$file},line={$line}::{$message}";
-		$output[] = "::{$type} file={$githubRepository}/commit/{$githubSha}/{$file},line={$line},col=0::{$message}";
-
-		$output[] = "::{$type} file=/{$file},line={$line}::{$message}";
-		$output[] = "::{$type} file=/{$file},line={$line},col=0::{$message}";
-
-
-		//  home/runner/work/bh-wp-github-actions-tests/bh-wp-github-actions-teststests/wp-mock/api/class-api-mock-test.php:50
-		$output[] = "::{$type} file={$githubWorkspace}{$file},line={$line}::{$message}";
-		$output[] = "::{$type} file={$githubWorkspace}/{$file},line={$line}::{$message}";
-
-		// ::error file=BrianHenryIE/bh-wp-github-actions-teststests/wp-mock/api/class-api-mock-test.php,line=50::Failed asserting that false is true.
-		$output[] = "::{$type} file={$githubRepository}{$file},line={$line}::{$message}";
-		$output[] = "::{$type} file={$githubRepository}/{$file},line={$line}::{$message}";
-
-		$output[] = "::{$type} file={$githubSha}{$file},line={$line}::{$message}";
-		$output[] = "::{$type} file={$githubSha}/{$file},line={$line}::{$message}";
-
-		$output[] = "::{$type} file={$githubRef}{$file},line={$line}::{$message}";
-		$output[] = "::{$type} file={$githubRef}/{$file},line={$line}::{$message}";
-
-
-		$output[] = "::{$type} file={$githubWorkspace}{$file},line={$line},col=0::{$message}";
-		$output[] = "::{$type} file={$githubWorkspace}/{$file},line={$line},col=0::{$message}";
-
-		$output[] = "::{$type} file={$githubRepository}{$file},line={$line},col=0::{$message}";
-		$output[] = "::{$type} file={$githubRepository}/{$file},line={$line},col=0::{$message}";
-
-		$output[] = "::{$type} file={$githubSha}{$file},line={$line},col=0::{$message}";
-		$output[] = "::{$type} file={$githubSha}/{$file},line={$line},col=0::{$message}";
-
-		$output[] = "::{$type} file={$githubRef}{$file},line={$line},col=0::{$message}";
-		$output[] = "::{$type} file={$githubRef}/{$file},line={$line},col=0::{$message}";
+//		$output[] = "::{$type} file=/{$path},line={$line},col=0::{$message}";
+//
+//		$output[] = "::{$type} file={$githubRepository}/commit/{$githubSha}/{$file},line={$line}::{$message}";
+//		$output[] = "::{$type} file={$githubRepository}/commit/{$githubSha}/{$file},line={$line},col=0::{$message}";
+//
+//		$output[] = "::{$type} file=/{$file},line={$line}::{$message}";
+//		$output[] = "::{$type} file=/{$file},line={$line},col=0::{$message}";
+//
+//
+//		//  home/runner/work/bh-wp-github-actions-tests/bh-wp-github-actions-teststests/wp-mock/api/class-api-mock-test.php:50
+//		$output[] = "::{$type} file={$githubWorkspace}{$file},line={$line}::{$message}";
+//		$output[] = "::{$type} file={$githubWorkspace}/{$file},line={$line}::{$message}";
+//
+//		// ::error file=BrianHenryIE/bh-wp-github-actions-teststests/wp-mock/api/class-api-mock-test.php,line=50::Failed asserting that false is true.
+//		$output[] = "::{$type} file={$githubRepository}{$file},line={$line}::{$message}";
+//		$output[] = "::{$type} file={$githubRepository}/{$file},line={$line}::{$message}";
+//
+//		$output[] = "::{$type} file={$githubSha}{$file},line={$line}::{$message}";
+//		$output[] = "::{$type} file={$githubSha}/{$file},line={$line}::{$message}";
+//
+//		$output[] = "::{$type} file={$githubRef}{$file},line={$line}::{$message}";
+//		$output[] = "::{$type} file={$githubRef}/{$file},line={$line}::{$message}";
+//
+//
+//		$output[] = "::{$type} file={$githubWorkspace}{$file},line={$line},col=0::{$message}";
+//		$output[] = "::{$type} file={$githubWorkspace}/{$file},line={$line},col=0::{$message}";
+//
+//		$output[] = "::{$type} file={$githubRepository}{$file},line={$line},col=0::{$message}";
+//		$output[] = "::{$type} file={$githubRepository}/{$file},line={$line},col=0::{$message}";
+//
+//		$output[] = "::{$type} file={$githubSha}{$file},line={$line},col=0::{$message}";
+//		$output[] = "::{$type} file={$githubSha}/{$file},line={$line},col=0::{$message}";
+//
+//		$output[] = "::{$type} file={$githubRef}{$file},line={$line},col=0::{$message}";
+//		$output[] = "::{$type} file={$githubRef}/{$file},line={$line},col=0::{$message}";
 
 
 //	    $output = "::{$file}: line {$line}, col 0, {$type} - {$message}";
