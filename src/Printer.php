@@ -172,6 +172,6 @@ class Printer extends ResultPrinter
 		$c = new \ReflectionClass($klass);
 		$m = $c->getMethod($method);
 
-		return [$m->getFileName(), $m->getStartLine()];
+		return [$m->getFileName(), $m->getEndLine()];
 	}
 }
