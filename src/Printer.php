@@ -69,7 +69,8 @@ class Printer extends ResultPrinter
 		}
 
 
-		$message = explode("\n", $e->getMessage())[0];
+//		$message = explode("\n", $e->getMessage())[0];
+		$message = str_replace('\\', '\\\\', $e->getMessage());
 
 		$type = $this->getCurrentType();
 		$file = $this->relativePath($path);
