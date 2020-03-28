@@ -67,11 +67,11 @@ class Printer extends ResultPrinter
 //		error_log($defect->getExceptionAsString());
 
 
-		$message = explode("\n", $e->getMessage());
+		$message = explode("\n", $defect->getExceptionAsString());
 		$message = implode( '%0A', $message );
 
 		error_log( base64_encode( $message ));
-		
+
 		$type = $this->getCurrentType();
 		$file = $this->relativePath($path);
 
