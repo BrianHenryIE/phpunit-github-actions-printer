@@ -68,7 +68,9 @@ class Printer extends ResultPrinter
 
 
 //		$message = explode("\n", $e->getMessage())[0];
-		$message = str_replace('\n', '%0A', $defect->getExceptionAsString());
+
+		$message = str_replace("\n", '%0A', $defect->getExceptionAsString());
+
 
 		$type = $this->getCurrentType();
 		$file = $this->relativePath($path);
