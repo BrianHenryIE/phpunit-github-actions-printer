@@ -58,14 +58,15 @@ class Printer extends ResultPrinter
 			$defect->getTestName()
 		);
 
-	if($path !== $reflectedPath) {
+		if($path !== $reflectedPath) {
 			$path = $reflectedPath;
 			$line = $reflectedLine;
 		}
 
 
+
 //		$message = explode("\n", $e->getMessage())[0];
-		$message = str_replace('\\', '\\\\', $e->getMessage());
+		$message = str_replace('\n', '%0A', $e->getMessage());
 
 		$type = $this->getCurrentType();
 		$file = $this->relativePath($path);
