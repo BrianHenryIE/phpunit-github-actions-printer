@@ -64,6 +64,7 @@ class Printer extends ResultPrinter
 		}
 
 
+		error_log( $e->getMessage() );
 
 //		$message = explode("\n", $e->getMessage())[0];
 		$message = str_replace('\n', '%0A', $e->getMessage());
